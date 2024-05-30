@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AMaRMS.EquipmentPage"
+             Title="EquipmentPage">
+
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Frame BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Label Text="Оборудование"/>
+                    <CollectionView x:Name="EquipmentList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Label Text="{Binding Name}"/>
+                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding SerialNumber}"/>
+                                    <Label Text="{Binding Location}"/>
+                                    <Label Text="{Binding InstallationDate}"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+            <Button Text="Добавить новове оборудование" x:Name="AddNewEquipment" Clicked="AddNewEquipment_Clicked" 
+                    BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+            <Frame x:Name="AddFrame" IsVisible="False" Margin="0,0,0,10">
+                <StackLayout>
+                    <Entry Placeholder="Введите название оборудования" x:Name="NameEntry"/>
+                    <Entry Placeholder="Введите описание оборудования" x:Name="DescriptionEntry"/>
+                    <Entry Placeholder="Введите серийный номер" x:Name="SerialNumberEntry"/>
+                    <Entry Placeholder="Введите где находится оборудование" x:Name="LocationEntry"/>
+                    <Entry Placeholder="Введите дату установки" x:Name="InstallationDateEntry"/>
+                    <Button Text="Добавить" x:Name="AddEquipment" Clicked="AddEquipment_Clicked"
+                            BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black"/>
+                </StackLayout>
+            </Frame>
+            <Button Text="Удалить оборудование" x:Name="DeleteEquipment" Clicked="DeleteEquipment_Clicked"
+                    BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+            <Frame x:Name="DeleteFrame" IsVisible="False">
+                <StackLayout>
+                    <Entry Placeholder="Введите название оборудования" x:Name="NameForDelete"/>
+                    <Entry Placeholder="Введите серийный номер оборудования" x:Name="SerialNumberForDelete"/>
+                    <Button Text="Удалить" x:Name="DeleteEquipmentButton" Clicked="DeleteEquipmentButton_Clicked"
+                            BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

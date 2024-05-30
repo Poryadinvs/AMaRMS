@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AMaRMS.Registrationpage"
+             Title="Registrationpage">
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Frame BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Entry Placeholder="Name" x:Name="NameEntry"/>
+                    <Entry Placeholder="LastName" x:Name="LastNameEntry"/>
+                    <Entry Placeholder="Email" x:Name="EmailEntry"/>
+                    <Entry Placeholder="Password" IsPassword="True" x:Name="PasswordEntry"/>
+                    <Entry Placeholder="Confirm Password" IsPassword="True" x:Name="ConfirmPasswordEntry"/>
+                </StackLayout>
+            </Frame>
+            <StackLayout>
+                <Button Text="Регистрация" Margin="0,0,0,10" BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Clicked="Registration_Clicked"/>
+                <Button Text="Вход" Margin="0,0,0,10" BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Clicked="Entry_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

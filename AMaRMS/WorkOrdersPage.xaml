@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AMaRMS.WorkOrdersPage"
+             Title="WorkOrdersPage">
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Frame  BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Label Text="Рабочие заказы"/>
+                    <CollectionView x:Name="WorkOrdersList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Label Text="{Binding EquipmentId}"/>
+                                    <Label Text="{Binding WorkOrderDate}"/>
+                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding Status}"/>
+                                    <Label Text="{Binding AssignedTo}"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+            <Button Text="Добавить новый рабочий заказ" x:Name="AddWorkOrder" Clicked="AddWorkOrder_Clicked"
+                    BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+            <Frame x:Name="AddFrame" IsVisible="False"  BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Entry Placeholder="Введите id оборудования" x:Name="EquipmentIdEntry"/>
+                    <Entry Placeholder="Введите дату рабочего заказа" x:Name="WorkOrderDateEntry"/>
+                    <Entry Placeholder="Введите описание" x:Name="DescriptionEntry"/>
+                    <Entry Placeholder="Введите кому назначено" x:Name="AssignedToEntry"/>
+                    <Button Text="Добавить" x:Name="AddWorkOrderButton" Clicked="AddWorkOrderButton_Clicked"
+                            BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+                </StackLayout>
+            </Frame>
+            <Button Text="Сменить статус заказа" x:Name="ChangeStatus" Clicked="ChangeStatus_Clicked"
+                    BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+            <Frame x:Name="ChangeStatusFrame" IsVisible="False"  BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Entry Placeholder="Введите id оборудования" x:Name="EquipmentIdForStatus"/>
+                    <Entry Placeholder="Введите дату заказа" x:Name="WorkOrderDateForStatus"/>
+                    <Entry Placeholder="Введите новый статус" x:Name="NewStatusEntry"/>
+                    <Button Text="Сменить статус" x:Name="ChangeStatusButton" Clicked="ChangeStatusButton_Clicked"
+                            BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+                </StackLayout>
+            </Frame>
+            <Button Text="Удалить рабочий заказ" x:Name="DeleteWorkOrder" Clicked="DeleteWorkOrder_Clicked"
+                    BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+            <Frame x:Name="DeleteFrame" IsVisible="False"  BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Entry Placeholder="Введите id оборудования" x:Name="EquipmentIdForDelete"/>
+                    <Entry Placeholder="Введите дату заказа" x:Name="WorkOrderDateForDelete"/>
+                    <Button Text="Удалить" x:Name="DeleteWorkOrderButton" Clicked="DeleteWorkOrderButton_Clicked"
+                            BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

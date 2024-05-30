@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AMaRMS.MaintenanceSchedulePage"
+             Title="MaintenanceSchedulePage">
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Frame BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Label Text="График обслуживания"/>
+                    <CollectionView x:Name="MaintenanceScheduleList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Label Text="{Binding EquipmentId}"/>
+                                    <Label Text="{Binding MaintenanceType}"/>
+                                    <Label Text="{Binding LastMaintenanceDate}"/>
+                                    <Label Text="{Binding NextMaintenanceDate}"/>
+                                    <Label Text="{Binding IsDone}"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+            <Button Text="Добавить график обслуживания" x:Name="AddMaintenanceSchedule" Clicked="AddMaintenanceSchedule_Clicked"
+                    BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+            <Frame x:Name="AddFrame" IsVisible="False" BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Entry Placeholder="Введите id оборудования" x:Name="EquipmentIdEntry"/>
+                    <Entry Placeholder="Введите тип обслуживания" x:Name="MaintenanceTypeEntry"/>
+                    <Entry Placeholder="Введите дату последнего обслуживания" x:Name="LastMaintenanceDateEntry"/>
+                    <Entry Placeholder="Введите дату следующего обслуживания" x:Name="NextMaintenanceDateEntry"/>
+                    <Button Text="Добавить" x:Name="AddSchedule" Clicked="AddSchedule_Clicked"
+                            BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+                </StackLayout>
+            </Frame>
+            <Button Text="Отметить как выполнено" x:Name="MarkAsDone" Clicked="MarkAsDone_Clicked"
+                    BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+            <Frame x:Name="MarkAsDoneFrame" IsVisible="False" BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Entry Placeholder="Введите id оборудования" x:Name="EquipmentIdForMark"/>
+                    <Entry Placeholder="Введите дату обслуживания" x:Name="DateForMark"/>
+                    <Button Text="Отметить" x:Name="MarkDoneButton" Clicked="MarkDoneButton_Clicked"
+                            BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

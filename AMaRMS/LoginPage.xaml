@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AMaRMS.LoginPage"
+             Title="LoginPage">
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Frame BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Entry Placeholder="Login" x:Name="EmailEntry"/>
+                    <Entry Placeholder="Password" IsPassword="True" x:Name="PasswordEntry"/>
+                </StackLayout>
+            </Frame>
+            <StackLayout>
+                <Button x:Name="Entry" Text="Вход" Margin="0,0,0,10" BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Clicked="Entry_Clicked"/>
+                <Button x:Name="Redistration" Text="Регистрация" BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Clicked="Registration_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

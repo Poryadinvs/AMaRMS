@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AMaRMS.CompletedWorkPage"
+             Title="CompletedWorkPage">
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Frame BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Label Text="Выполненные работы"/>
+                    <CollectionView x:Name="MaintenanceRecordList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Label Text="{Binding EquipmentId}"/>
+                                    <Label Text="{Binding MaintenanceDate}"/>
+                                    <Label Text="{Binding MaintenanceType}"/>
+                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding DurationHours}"/>
+                                    <Label Text="{Binding Cost}"/>
+                                    <Label Text="{Binding PerformedBy}"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+            <Button Text="Добавить новую запись о выполненной работе" x:Name="AddNewRecord" Clicked="AddNewRecord_Clicked"
+                    BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+            <Frame x:Name="AddFrame" IsVisible="False"  BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Entry Placeholder="Введите id оборудования" x:Name="EquipmentIdEntry"/>
+                    <Entry Placeholder="Введите дату обслуживания" x:Name="MaintenanceDateEntry"/>
+                    <Entry Placeholder="Введите тип обслуживания" x:Name="MaintenanceTypeEntry"/>
+                    <Entry Placeholder="Введите описание" x:Name="DescriptionEntry"/>
+                    <Entry Placeholder="Введите продолжительность часов" x:Name="DurationHoursEntry"/>
+                    <Entry Placeholder="Введите стоимость" x:Name="CostEntry"/>
+                    <Entry Placeholder="Введите кто выполнил" x:Name="PerformedByEntry"/>
+                    <Button Text="Добавить" x:Name="AddRecord" Clicked="AddRecord_Clicked"
+                            BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+                </StackLayout>
+            </Frame>
+            <Button Text="Удалить данные о выполненной работе" x:Name="DeleteRecord" Clicked="DeleteRecord_Clicked"/>
+            <Frame x:Name="DeleteFrame" IsVisible="False"  BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Entry Placeholder="Введите id оборудования" x:Name="EquipmentIdForDelete"/>
+                    <Entry Placeholder="Введите дату обслуживания" x:Name="MaintenanceDateForDelete"/>
+                    <Button Text="Удалить" x:Name="DeleteRecordButton" Clicked="DeleteRecordButton_Clicked"
+                            BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

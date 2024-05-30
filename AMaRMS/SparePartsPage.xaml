@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AMaRMS.SparePartsPage"
+             Title="SparePartsPage">
+    <ScrollView>
+        <StackLayout Padding="10">
+            <Frame BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Label Text="Запасные части"/>
+                    <CollectionView x:Name="SparePartsList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Label Text="{Binding PartName}"/>
+                                    <Label Text="{Binding PartNumber}"/>
+                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding Quantity}"/>
+                                    <Label Text="{Binding Location}"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+            <Button Text="Добавить новую запасную часть" x:Name="AddNewPart" Clicked="AddNewPart_Clicked"
+                    BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+            <Frame x:Name="AddFrame" IsVisible="False" BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Entry Placeholder="Введите название запасной части" x:Name="PartNameEntry"/>
+                    <Entry Placeholder="Введите номер запасной части" x:Name="PartNumberEntry"/>
+                    <Entry Placeholder="Введите описание запасной части" x:Name="DescriptionEntry"/>
+                    <Entry Placeholder="Введите количество запасных частей" x:Name="QuantityEntry"/>
+                    <Entry Placeholder="Введите где находится запасная часть" x:Name="LocationEntry"/>
+                    <Button Text="Добавить" x:Name="AddPartButton" Clicked="AddPartButton_Clicked"
+                            BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+                </StackLayout>
+            </Frame>
+            <Button Text="Удалить данные о запасной части" x:Name="DeletePart" Clicked="DeletePart_Clicked"/>
+            <Frame x:Name="DeleteFrame" IsVisible="False" BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Entry Placeholder="Введите название запасной части" x:Name="PartNameForDelete"/>
+                    <Entry Placeholder="Введите номер запасной части" x:Name="PartNumberForDelete"/>
+                    <Button Text="Удалить" x:Name="DeletePartButton" Clicked="DeletePartButton_Clicked"
+                            BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+                </StackLayout>
+            </Frame>
+            <Button Text="Добавить количество запасных частей" x:Name="AddQuantity" Clicked="AddQuantity_Clicked"/>
+            <Frame x:Name="AddQuantityFrame" IsVisible="False" BackgroundColor="AliceBlue" Margin="0,0,0,10" BorderColor="Black">
+                <StackLayout>
+                    <Entry Placeholder="Введите название запасной части" x:Name="PartNameForQuantity"/>
+                    <Entry Placeholder="Введите номер запасной части" x:Name="PartNumberForQuantity"/>
+                    <Entry Placeholder="Введите количество запасных частей" x:Name="QuantityForAdd"/>
+                    <Button Text="Добавить" x:Name="AddQuantityButton" Clicked="AddQuantityButton_Clicked"
+                            BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Margin="0,0,0,10"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
