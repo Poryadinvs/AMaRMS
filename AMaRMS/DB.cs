@@ -20,6 +20,8 @@ namespace AMaRMS
             _database.CreateTableAsync<MaintenanceRecord>().Wait();
             _database.CreateTableAsync<SpareParts>().Wait();
             _database.CreateTableAsync<WorkOrders>().Wait();
+            _database.CreateTableAsync<Manager>().Wait();
+            SeedData();
         }
 
         public Task<int> SaveUserAsync(User user) => _database.InsertAsync(user);
@@ -143,6 +145,70 @@ namespace AMaRMS
         public Task<int> DeleteWorkOrderAsync(WorkOrders order)
         {
             return _database.DeleteAsync(order);
+        }
+
+        private async void SeedData()
+        {
+            // Добавляем одного менеджера
+            if (await _database.Table<Manager>().CountAsync() == 0)
+            {
+                var manager = new Manager
+                {
+                    FirstName = "Иван",
+                    LastName = "Иванов",
+                    MiddleName = "Иванович",
+                    Email = "ivanov@example.com",
+                    Password = "password123"
+                };
+                await SaveManagerAsync(manager);
+            }
+           
+        }
+
+        // Методы для работы с таблицей User
+        public Task<List<User>> GetAllUsersAsync()
+        {
+            return _database.Table<User>().ToListAsync();
+        }
+
+        public Task<User> GetUserAsync(string login, string password)
+        {
+            return _database.Table<User>().FirstOrDefaultAsync(u => u.Email == login && u.Password == password);
+        }
+
+        
+
+        public Task<int> DeleteUserAsync(User user)
+        {
+            return _database.DeleteAsync(user);
+        }
+
+        // Методы для работы с таблицей Manager
+        public Task<List<Manager>> GetAllManagersAsync()
+        {
+            return _database.Table<Manager>().ToListAsync();
+        }
+
+        public Task<Manager> GetManagerAsync(string email, string password)
+        {
+            return _database.Table<Manager>().FirstOrDefaultAsync(m => m.Email == email && m.Password == password);
+        }
+
+        public Task<int> SaveManagerAsync(Manager manager)
+        {
+            if (manager.Id != 0)
+            {
+                return _database.UpdateAsync(manager);
+            }
+            else
+            {
+                return _database.InsertAsync(manager);
+            }
+        }
+
+        public Task<int> DeleteManagerAsync(Manager manager)
+        {
+            return _database.DeleteAsync(manager);
         }
     }
 }

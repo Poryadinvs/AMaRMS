@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging.Abstractions;
+
 namespace AMaRMS;
 
 public partial class LoginPage : ContentPage
@@ -9,18 +11,23 @@ public partial class LoginPage : ContentPage
 
     async void Entry_Clicked(object sender, EventArgs e)
     {
-        string email = EmailEntry.Text;
+        string login = EmailEntry.Text;
         string password = PasswordEntry.Text;
 
-        var user = await App.Database.GetUserByEmailAndPasswordAsync(email, password);
+        var user = await App.Database.GetUserAsync(login, password);
+        var manager = await App.Database.GetManagerAsync(login, password);
 
         if (user != null)
         {
-            await Navigation.PushModalAsync(new MainPage());
+            await Navigation.PushAsync(new WorkOrdersPage());
+        }
+        else if (manager != null)
+        {
+            await Navigation.PushAsync(new MainPage());
         }
         else
         {
-            await DisplayAlert("Ошибка", "Неверный логин или пароль", "OK");
+            await DisplayAlert("Ошибка", "Логин или пароль не совпадают", "ОК");
         }
     }
 
