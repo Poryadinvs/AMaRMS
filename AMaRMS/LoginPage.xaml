@@ -15,6 +15,34 @@
                 <Button x:Name="Entry" Text="Вход" Margin="0,0,0,10" BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Clicked="Entry_Clicked"/>
                 <Button x:Name="Redistration" Text="Регистрация" BorderColor="Black" BorderWidth="1" BackgroundColor="AliceBlue" TextColor="Black" Clicked="Registration_Clicked"/>
             </StackLayout>
+            <CollectionView x:Name="TestUser">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding Id}"></Label>
+                            <Label Text="{Binding Name}"></Label>
+                            <Label Text="{Binding LastName}"></Label>
+                            <Label Text="{Binding Email}"></Label>
+                            <Label Text="{Binding Password}"></Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Rectangle WidthRequest="5" HeightRequest="5" BackgroundColor="Red"/>
+            <CollectionView x:Name="TestManager">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding Id}"></Label>
+                            <Label Text="{Binding FirstName}"></Label>
+                            <Label Text="{Binding LastName}"></Label>
+                            <Label Text="{Binding MiddleName}"></Label>
+                            <Label Text="{Binding Email}"></Label>
+                            <Label Text="{Binding Password}"></Label>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ScrollView>
 </ContentPage>

@@ -24,7 +24,18 @@ namespace AMaRMS
             SeedData();
         }
 
-        public Task<int> SaveUserAsync(User user) => _database.InsertAsync(user);
+        //public Task<int> SaveUserAsync(User user) => _database.InsertAsync(user);
+        public Task<int> SaveUserAsync(User user)
+        {
+            if (user.Id != 0)
+            {
+                return _database.UpdateAsync(user);
+            }
+            else
+            {
+                return _database.InsertAsync(user);
+            }
+        }
         public Task<User> GetUserByEmailAndPasswordAsync(string email, string password) =>
        _database.Table<User>().Where(u => u.Email == email && u.Password == password).FirstOrDefaultAsync();
         public Task<List<Equipment>> GetAllEquipmentAsync()
@@ -147,7 +158,7 @@ namespace AMaRMS
             return _database.DeleteAsync(order);
         }
 
-        private async void SeedData()
+        public async void SeedData()
         {
             // Добавляем одного менеджера
             if (await _database.Table<Manager>().CountAsync() == 0)
@@ -162,7 +173,7 @@ namespace AMaRMS
                 };
                 await SaveManagerAsync(manager);
             }
-           
+
         }
 
         // Методы для работы с таблицей User
@@ -209,6 +220,18 @@ namespace AMaRMS
         public Task<int> DeleteManagerAsync(Manager manager)
         {
             return _database.DeleteAsync(manager);
+        }
+
+        // Методы для работы с таблицей User
+        public Task<List<User>> GetUsersAsync()
+        {
+            return _database.Table<User>().ToListAsync();
+        }
+
+        // Методы для работы с таблицей Manager
+        public Task<List<Manager>> GetManagersAsync()
+        {
+            return _database.Table<Manager>().ToListAsync();
         }
     }
 }
